@@ -1,6 +1,25 @@
 Statyk
 ======
 
+Statyk is a simple easy to use statyk site generator written in go.
+
+Commands
+========
+
+## init
+`statyk init`
+
+## build
+`statyk build`
+
+## serve
+`statyk serve`
+
+## new
+`statyk new`
+
+## upload
+`statyk upload`
 
 ### TODO
 
