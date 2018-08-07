@@ -16,17 +16,27 @@ import (
 
 /* Upload Flags */
 var (
-	bucket string
-	region string
-	all    bool
-	image  bool
+	bucket    string
+	directory string
+	all       bool
+	image     bool
 )
 
 func init() {
 	flag.StringVarP(&bucket, "bucket", "b", "", "Gives a bucket name for aws upload")
-	flag.StringVarP(&region, "region", "r", "", "Gives a region name for aws upload")
+	flag.StringVarP(&directory, "directory", "d", "", "Creates a 'directory' within s3 bucket")
 	flag.BoolVarP(&all, "all", "a", false, "Should upload all files in current directory")
 	flag.BoolVarP(&image, "image", "i", false, "Is the file an image")
+}
+
+func isDirectory(path string) bool {
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		log.Println(err)
+		return true
+	}
+
+	return fileInfo.IsDir()
 }
 
 /*All : Uploads site*/
@@ -40,6 +50,15 @@ func All(fpath string) {
 
 	for _, f := range files {
 		filename := filepath.Base(f)
+
+		if directory != "" {
+			filename = directory + "/" + filename
+		}
+
+		if isDirectory(f) {
+			continue
+		}
+
 		file, err := os.Open(f)
 		if err != nil {
 			log.Fatalln(err)
@@ -69,6 +88,11 @@ func All(fpath string) {
 
 /*Image : Upload an image and returns new hashed file name*/
 func Image(f, fpath string) {
+
+	if isDirectory(fpath) {
+		log.Fatalln("File is a directory")
+	}
+
 	file, err := os.Open(fpath)
 	if err != nil {
 		log.Fatalln(err)
@@ -83,6 +107,10 @@ func Image(f, fpath string) {
 
 	filename := hex.EncodeToString(hash.Sum(nil)) + filepath.Ext(f)
 
+	if directory != "" {
+		filename = directory + "/" + filename
+	}
+
 	s3Info := S3UploadInfo{
 		Bucket:   bucket,
 		Filename: filename,
@@ -94,7 +122,12 @@ func Image(f, fpath string) {
 	fmt.Println("Uploaded:", filename, "to", bucket)
 }
 
+/*File : Uploads a file to aws*/
 func File(f, fpath string) {
+	if isDirectory(fpath) {
+		log.Fatalln("File is a directory")
+	}
+
 	file, err := os.Open(fpath)
 	if err != nil {
 		log.Fatalln(err)
@@ -105,6 +138,10 @@ func File(f, fpath string) {
 		contentType = "text/html"
 	} else if filepath.Ext(f) == ".xml" {
 		contentType = "application/xml"
+	}
+
+	if directory != "" {
+		f = directory + "/" + f
 	}
 
 	s3Info := S3UploadInfo{
@@ -120,6 +157,7 @@ func File(f, fpath string) {
 	fmt.Println("Uploaded", f, "to", bucket)
 }
 
+/*Upload : Handles calls to upload command*/
 func Upload() {
 
 	flag.Parse()

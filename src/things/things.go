@@ -20,10 +20,11 @@ type SiteConfig struct {
 
 /*PostConfig : Configuration for a post*/
 type PostConfig struct {
-	Title    string `yaml:"title"`
-	Date     string `yaml:"date"`
-	URL      string `yaml:"url"`
-	Markdown string `yaml:"markdown"`
+	Title       string `yaml:"title"`
+	Date        string `yaml:"date"`
+	URL         string `yaml:"url"`
+	Markdown    string `yaml:"markdown"`
+	Description string `yaml:"description"`
 }
 
 /*Post : Defines a post*/

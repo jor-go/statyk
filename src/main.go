@@ -11,6 +11,9 @@ import (
 	"statyk/src/upload"
 )
 
+/*APP_VERSION : Is the current statyk version*/
+const APP_VERSION = "0.0.1"
+
 const (
 	//INIT : Constant for init arg
 	INIT = "init"
@@ -22,6 +25,8 @@ const (
 	BUILD = "build"
 	//NEW : Constant for the new arg
 	NEW = "new"
+	//VERSION : constant for the version arg
+	VERSION = "version"
 )
 
 func main() {
@@ -46,6 +51,8 @@ func main() {
 		break
 	case NEW:
 		new.New(os.Args)
+	case VERSION:
+		fmt.Println(APP_VERSION)
 	default:
 		fmt.Println("Command not recognized...")
 	}

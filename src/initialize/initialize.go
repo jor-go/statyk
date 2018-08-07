@@ -76,6 +76,12 @@ func Initialize() {
 		panic(err)
 	}
 
+	// check if project already exists
+	configPath := filepath.Join(ex, "config.prod.yml")
+	if _, err := os.Stat(configPath); err == nil {
+		log.Fatalln("Project already initialized")
+	}
+
 	// must be completed first
 	generateDirs(ex)
 

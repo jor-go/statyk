@@ -64,8 +64,9 @@ This is a new post
 `
 
 var DefaultPostConfig = things.PostConfig{
-	Title:    "New Post",
-	URL:      "new-post",
-	Date:     "1/2/2006",
-	Markdown: "new-post.md",
+	Title:       "New Post",
+	URL:         "new-post",
+	Date:        "1/2/2006",
+	Markdown:    "new-post.md",
+	Description: "This is an example of a post description. This will show up in meta tags",
 }
