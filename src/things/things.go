@@ -20,11 +20,12 @@ type SiteConfig struct {
 
 /*PostConfig : Configuration for a post*/
 type PostConfig struct {
-	Title       string `yaml:"title"`
-	Date        string `yaml:"date"`
-	URL         string `yaml:"url"`
-	Markdown    string `yaml:"markdown"`
-	Description string `yaml:"description"`
+	Title       string            `yaml:"title"`
+	Date        string            `yaml:"date"`
+	URL         string            `yaml:"url"`
+	Markdown    string            `yaml:"markdown"`
+	Description string            `yaml:"description"`
+	Custom      map[string]string `yaml:"custom"`
 }
 
 /*Post : Defines a post*/
@@ -38,6 +39,11 @@ type Post struct {
 type MultiPost struct {
 	SiteConfig
 	Posts []Post
+}
+
+/*GetPostsAfter : Returns posts after index of*/
+func (m *MultiPost) GetPostsAfter(i int) []Post {
+	return m.Posts[i:]
 }
 
 /*SitemapURL : The struct representing the xml for a single link*/

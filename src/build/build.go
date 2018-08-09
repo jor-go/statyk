@@ -118,11 +118,19 @@ func Build(isProd bool) {
 
 	// css
 	inputSass := filepath.Join(workingDirectory, "assets", "main.sass")
-	outputSass := filepath.Join(workingDirectory, "build", "assets", "main.css")
+	var outputSass string
+	if isProd {
+		outputSass = filepath.Join(workingDirectory, "build", "assets", "main.css")
+	} else {
+		outputSass = filepath.Join(workingDirectory, "build", "main.css")
+	}
+
 	buildPath := inputSass + ":" + outputSass
 	sass := exec.Command("sass", buildPath, "--style", "compressed")
-	err = sass.Run()
+	out, err := sass.CombinedOutput()
 	if err != nil {
+		fmt.Printf("%s\n", out)
 		log.Fatalln(err)
 	}
+	fmt.Printf("%s\n", out)
 }

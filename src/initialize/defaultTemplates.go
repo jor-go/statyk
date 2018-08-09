@@ -9,6 +9,8 @@ const DefaultHome = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <link rel="canonical" href="{{.SiteConfig.HomeLocation}}">
     <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}/main.css">
     <title>{{.SiteConfig.Name}}</title>
 </head>
@@ -16,6 +18,7 @@ const DefaultHome = `
     {{template "header" .}}
     {{range .Posts}}
         {{.Config.Title}}
+        {{index .Config.Custom "main-img"}}
     {{end}}
     {{template "footer" .}}
 </body>
@@ -39,6 +42,7 @@ const DefaultPost = `
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="{{.Config.Description}}">
     <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}/main.css">
     <title>{{.Config.Title}}</title>
 </head>
@@ -69,4 +73,7 @@ var DefaultPostConfig = things.PostConfig{
 	Date:        "1/2/2006",
 	Markdown:    "new-post.md",
 	Description: "This is an example of a post description. This will show up in meta tags",
+	Custom: map[string]string{
+		"main-img": "https://example.com/image.jpg",
+	},
 }
