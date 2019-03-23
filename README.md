@@ -62,7 +62,7 @@ This command is used to upload site files to AWS S3.
 Run `statyk upload "filename" -bucket "bucket name"` to upload file to a certain S3 bucket.
 Run `statyk upload -all -bucket "bucket name"` to upload the contents of a directory to a bucket (This will exclude sub-directories).
 Run `statyk upload "image.jpg" -image -bucket "bucket name"` to upload image to bucket. This will take the md5 hash of the image as the name. It will print the new name after uploading.
-Adding the `-directory "foo"` flag to an upload command will prepend a "directory" to the file name for S3. ex. "images/image.jpg"
+Adding the `-directory "images"` flag to an upload command will prepend a "directory" to the file name for S3. ex. "images/image.jpg"
 
 ### TODO
 

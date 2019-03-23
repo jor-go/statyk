@@ -52,11 +52,10 @@ func UploadBatch(uploads []S3UploadInfo) {
 		var obj s3manager.BatchUploadObject
 
 		input := &s3manager.UploadInput{
-			Bucket:       aws.String(s.Bucket),
-			ContentType:  aws.String(s.ContentType),
-			CacheControl: aws.String(s.CacheControl),
-			Key:          aws.String(s.Filename),
-			Body:         s.File,
+			Bucket:      aws.String(s.Bucket),
+			ContentType: aws.String(s.ContentType),
+			Key:         aws.String(s.Filename),
+			Body:        s.File,
 		}
 		obj.Object = input
 		objects = append(objects, obj)

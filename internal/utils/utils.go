@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"statyk/src/things"
+	"statyk/internal/things"
 
 	blackfriday "gopkg.in/russross/blackfriday.v2"
 	yaml "gopkg.in/yaml.v2"

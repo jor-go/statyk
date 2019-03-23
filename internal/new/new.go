@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"statyk/src/initialize"
-	"statyk/src/things"
+	"statyk/internal/initialize"
+	"statyk/internal/things"
 	"strings"
 	"time"
 

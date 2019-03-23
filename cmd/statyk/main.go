@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"statyk/src/build"
-	"statyk/src/initialize"
-	"statyk/src/new"
-	"statyk/src/serve"
-	"statyk/src/upload"
+	"statyk/internal/build"
+	"statyk/internal/initialize"
+	"statyk/internal/new"
+	"statyk/internal/serve"
+	"statyk/internal/upload"
 )
 
 /*APP_VERSION : Is the current statyk version*/

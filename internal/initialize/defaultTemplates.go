@@ -1,6 +1,6 @@
 package initialize
 
-import "statyk/src/things"
+import "statyk/internal/things"
 
 const DefaultHome = `
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ const DefaultHome = `
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
     <link rel="canonical" href="{{.SiteConfig.HomeLocation}}">
-    <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}/main.css">
+    <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}">
     <title>{{.SiteConfig.Name}}</title>
 </head>
 <body>
@@ -43,7 +43,7 @@ const DefaultPost = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="{{.Config.Description}}">
-    <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}/main.css">
+    <link rel="stylesheet" type="text/css" href="{{.SiteConfig.StyleLocation}}">
     <title>{{.Config.Title}}</title>
 </head>
 <body>

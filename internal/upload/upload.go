@@ -72,11 +72,10 @@ func All(fpath string) {
 		}
 
 		s3Info := S3UploadInfo{
-			Bucket:       bucket,
-			Filename:     filename,
-			File:         file,
-			ContentType:  contentType,
-			CacheControl: "max-age=300",
+			Bucket:      bucket,
+			Filename:    filename,
+			File:        file,
+			ContentType: contentType,
 		}
 
 		infos = append(infos, s3Info)

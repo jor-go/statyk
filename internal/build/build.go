@@ -8,8 +8,8 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"statyk/src/things"
-	"statyk/src/utils"
+	"statyk/internal/things"
+	"statyk/internal/utils"
 )
 
 var posts []things.Post

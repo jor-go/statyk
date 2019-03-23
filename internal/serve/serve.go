@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"statyk/src/utils"
+	"statyk/internal/utils"
 
 	"github.com/gorilla/mux"
 )

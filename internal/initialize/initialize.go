@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"statyk/src/things"
+	"statyk/internal/things"
 
 	"gopkg.in/yaml.v2"
 )
@@ -35,7 +35,7 @@ func generateConfigs(path string) {
 	// Generate default dev config
 	defaultDEVConfig := things.SiteConfig{
 		Name:          "New Site",
-		StyleLocation: "http://localhost:8080/assets/main.sass",
+		StyleLocation: "http://localhost:8080/assets/main.css",
 		HomeLocation:  "http://localhost:8080",
 		Port:          "8080",
 	}
@@ -48,7 +48,7 @@ func generateConfigs(path string) {
 	// Generate default prod config
 	defaultPRODConfig := things.SiteConfig{
 		Name:          "New Site",
-		StyleLocation: "https://cdn.example.com/main.sass",
+		StyleLocation: "https://cdn.example.com/main.css",
 		HomeLocation:  "http://example.com",
 	}
 	defaultPRODConfigYAML, err := yaml.Marshal(&defaultPRODConfig)
