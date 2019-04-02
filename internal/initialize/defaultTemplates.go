@@ -2,6 +2,7 @@ package initialize
 
 import "statyk/internal/things"
 
+// DefaultHome is the content of the default home template
 const DefaultHome = `
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +26,7 @@ const DefaultHome = `
 </html>
 `
 
+// DefaultGeneral is the contents of the default general html file
 const DefaultGeneral = `
 {{define "header"}}
 
@@ -35,6 +37,7 @@ const DefaultGeneral = `
 {{end}}
 `
 
+// DefaultPost is the contents of the default html template
 const DefaultPost = `
 <!DOCTYPE html>
 <html lang="en">
@@ -52,11 +55,13 @@ const DefaultPost = `
 </html>
 `
 
+// DefaultStyle is the content for the default .sass file
 const DefaultStyle = `
 body
     margin: 0
 `
 
+// DefaultMarkdown is the content for the default markdown file
 const DefaultMarkdown = `
 # New Post
 
@@ -67,6 +72,7 @@ This is a new post
 ![Some Image](http://example.com/image.jpg)
 `
 
+// DefaultPostConfig is the default config file
 var DefaultPostConfig = things.PostConfig{
 	Title:       "New Post",
 	URL:         "new-post",

@@ -44,7 +44,7 @@ func newPost(title, path string) {
 	fmt.Println("NEW", markdownPath)
 }
 
-/*New : Creates a new page*/
+// New Creates a new page*/
 func New(args []string) {
 	if len(args) < 3 {
 		log.Fatalln("Not enough arguements to 'new'")

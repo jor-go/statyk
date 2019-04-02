@@ -11,7 +11,7 @@ import (
 	"statyk/internal/upload"
 )
 
-/*APP_VERSION : Is the current statyk version*/
+// APP_VERSION Is the current statyk version
 const APP_VERSION = "0.0.1"
 
 const (

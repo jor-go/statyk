@@ -64,7 +64,3 @@ Run `statyk upload -all -bucket "bucket name"` to upload the contents of a direc
 Run `statyk upload "image.jpg" -image -bucket "bucket name"` to upload image to bucket. This will take the md5 hash of the image as the name. It will print the new name after uploading.
 Adding the `-directory "images"` flag to an upload command will prepend a "directory" to the file name for S3. ex. "images/image.jpg"
 
-### TODO
-
-* Js handling
-* Create Manifest.json?

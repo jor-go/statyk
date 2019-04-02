@@ -68,7 +68,7 @@ func generateExamplePost(path string) {
 	ioutil.WriteFile(filepath.Join(path, "markdown", "new-post.md"), []byte(DefaultMarkdown), os.ModePerm)
 }
 
-/*Initialize : Creates new site in the current directory*/
+// Initialize Creates new site in the current directory
 func Initialize() {
 	// get working directory
 	ex, err := os.Getwd()

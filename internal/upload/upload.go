@@ -14,7 +14,7 @@ import (
 	flag "github.com/spf13/pflag"
 )
 
-/* Upload Flags */
+// Upload Flags
 var (
 	bucket    string
 	directory string
@@ -39,7 +39,7 @@ func isDirectory(path string) bool {
 	return fileInfo.IsDir()
 }
 
-/*All : Uploads site*/
+// All Uploads site
 func All(fpath string) {
 	files, err := filepath.Glob(filepath.Join(fpath, "*"))
 	if err != nil {
@@ -65,27 +65,38 @@ func All(fpath string) {
 		}
 
 		var contentType string
-		if filepath.Ext(f) == "" {
-			contentType = "text/html"
-		} else if filepath.Ext(f) == ".xml" {
+		switch filepath.Ext(f) {
+		case ".xml":
 			contentType = "application/xml"
+			break
+		case ".svg":
+			contentType = "image/svg+xml"
+			break
+		case "":
+			contentType = "text/html"
+			break
+		default:
+			contentType = ""
 		}
 
 		s3Info := S3UploadInfo{
-			Bucket:      bucket,
-			Filename:    filename,
-			File:        file,
-			ContentType: contentType,
+			Bucket:   bucket,
+			Filename: filename,
+			File:     file,
+		}
+
+		if contentType != "" {
+			s3Info.ContentType = contentType
 		}
 
 		infos = append(infos, s3Info)
 	}
 
-	UploadBatch(infos)
+	Batch(infos)
 
 }
 
-/*Image : Upload an image and returns new hashed file name*/
+// Image Upload an image and returns new hashed file name
 func Image(f, fpath string) {
 
 	if isDirectory(fpath) {
@@ -121,7 +132,7 @@ func Image(f, fpath string) {
 	fmt.Println("Uploaded:", filename, "to", bucket)
 }
 
-/*File : Uploads a file to aws*/
+// File Uploads a file to aws
 func File(f, fpath string) {
 	if isDirectory(fpath) {
 		log.Fatalln("File is a directory")
@@ -133,10 +144,18 @@ func File(f, fpath string) {
 	}
 
 	var contentType string
-	if filepath.Ext(f) == "" {
-		contentType = "text/html"
-	} else if filepath.Ext(f) == ".xml" {
+	switch filepath.Ext(f) {
+	case ".xml":
 		contentType = "application/xml"
+		break
+	case ".svg":
+		contentType = "image/svg+xml"
+		break
+	case "":
+		contentType = "text/html"
+		break
+	default:
+		contentType = ""
 	}
 
 	if directory != "" {
@@ -147,8 +166,11 @@ func File(f, fpath string) {
 		Bucket:       bucket,
 		Filename:     f,
 		File:         file,
-		ContentType:  contentType,
 		CacheControl: "max-age=300",
+	}
+
+	if contentType != "" {
+		s3Info.ContentType = contentType
 	}
 
 	s3Info.Upload()
@@ -156,7 +178,7 @@ func File(f, fpath string) {
 	fmt.Println("Uploaded", f, "to", bucket)
 }
 
-/*Upload : Handles calls to upload command*/
+// Upload Handles calls to upload command
 func Upload() {
 
 	flag.Parse()

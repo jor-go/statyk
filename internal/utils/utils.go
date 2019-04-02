@@ -11,7 +11,7 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-/*YamlToPost : Convert Yaml file to a postconfig struct*/
+// YamlToPost Convert Yaml file to a postconfig struct
 func YamlToPost(path string) (p things.PostConfig) {
 	postFile, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -30,7 +30,7 @@ func YamlToPost(path string) (p things.PostConfig) {
 	return
 }
 
-/*YamlToConfig : Convert Yaml file to a siteConfig struct*/
+// YamlToConfig Convert Yaml file to a siteConfig struct
 func YamlToConfig(path string) (s things.SiteConfig) {
 	configFile, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -49,7 +49,7 @@ func YamlToConfig(path string) (s things.SiteConfig) {
 	return
 }
 
-/*MarkdownToHTML : Converts markdown file to HTML*/
+// MarkdownToHTML Converts markdown file to HTML
 func MarkdownToHTML(path string) (t template.HTML) {
 	file, err := ioutil.ReadFile(path)
 	if err != nil {

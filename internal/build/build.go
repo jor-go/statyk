@@ -82,7 +82,7 @@ func GetPosts(c things.SiteConfig, wd string) (posts []things.Post) {
 	return
 }
 
-/*Build : Builds a site based off config file*/
+// Build Builds a site based off config file*/
 func Build(isProd bool) {
 	workingDirectory, err := os.Getwd()
 	if err != nil {

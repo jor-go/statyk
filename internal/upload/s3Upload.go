@@ -22,7 +22,7 @@ func init() {
 	uploader = s3manager.NewUploader(sess)
 }
 
-/*S3UploadInfo : Info needed to upload file to AWS S3*/
+// S3UploadInfo Info needed to upload file to AWS S3
 type S3UploadInfo struct {
 	File         io.Reader
 	Bucket       string
@@ -31,7 +31,7 @@ type S3UploadInfo struct {
 	CacheControl string
 }
 
-/*Upload : Uploads file to s3*/
+// Upload Uploads file to s3
 func (s *S3UploadInfo) Upload() {
 	_, err := uploader.Upload(&s3manager.UploadInput{
 		Bucket:       aws.String(s.Bucket),
@@ -46,7 +46,8 @@ func (s *S3UploadInfo) Upload() {
 	}
 }
 
-func UploadBatch(uploads []S3UploadInfo) {
+// Batch uploads an array of files
+func Batch(uploads []S3UploadInfo) {
 	var objects []s3manager.BatchUploadObject
 	for _, s := range uploads {
 		var obj s3manager.BatchUploadObject

@@ -28,7 +28,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, path)
 }
 
-/*Serve : Serves the site locally*/
+// Serve Serves the site locally
 func Serve() {
 	wd, err := os.Getwd()
 	if err != nil {
