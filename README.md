@@ -6,11 +6,10 @@ Statyk is a simple easy to use statyk site generator written in go.
 Build
 =====
 
-### Get Dependancies
-`dep ensure`
+Uses go 1.12 or higher for module support
 
-### Build
-`go build`
+1. `cd cmd/statyk`
+2. `go install`
 
 Commands
 ========
