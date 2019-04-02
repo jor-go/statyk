@@ -8,7 +8,7 @@ Build
 
 Uses go 1.12 or higher for module support
 
-1. `cd cmd/statyk`
+1. `cd statyk/cmd/statyk`
 2. `go install`
 
 Commands
