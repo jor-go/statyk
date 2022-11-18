@@ -1,4 +1,4 @@
-package build
+package statyk
 
 import (
 	"bufio"
@@ -10,7 +10,19 @@ import (
 	"path/filepath"
 	"statyk/internal/things"
 	"statyk/internal/utils"
+
+	"github.com/spf13/cobra"
 )
+
+var BuildCmd = &cobra.Command{
+	Use:     "build",
+	Short:   "build builds a Statyk project",
+	Long:    `build builds a Statyk project`,
+	Aliases: []string{"b"},
+	Run: func(cmd *cobra.Command, args []string) {
+		build(true)
+	},
+}
 
 var posts []things.Post
 
@@ -83,7 +95,7 @@ func GetPosts(c things.SiteConfig, wd string) (posts []things.Post) {
 }
 
 // Build Builds a site based off config file*/
-func Build(isProd bool) {
+func build(isProd bool) {
 	workingDirectory, err := os.Getwd()
 	if err != nil {
 		log.Fatalln(err)

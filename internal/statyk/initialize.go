@@ -1,12 +1,12 @@
-package initialize
+package statyk
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"statyk/internal/things"
 
+	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )
 
@@ -16,16 +16,16 @@ func generateDirs(path string) {
 
 	// generate templates directory and starter templates
 	os.Mkdir(filepath.Join(path, "templates"), os.ModePerm)
-	ioutil.WriteFile(filepath.Join(path, "templates", "home.html"), []byte(DefaultHome), os.ModePerm)
-	ioutil.WriteFile(filepath.Join(path, "templates", "general.html"), []byte(DefaultGeneral), os.ModePerm)
-	ioutil.WriteFile(filepath.Join(path, "templates", "post.html"), []byte(DefaultPost), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "templates", "home.html"), []byte(DefaultHome), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "templates", "general.html"), []byte(DefaultGeneral), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "templates", "post.html"), []byte(DefaultPost), os.ModePerm)
 
 	// generate posts directory
 	os.Mkdir(filepath.Join(path, "posts"), os.ModePerm)
 
 	// generate assets directory
 	os.Mkdir(filepath.Join(path, "assets"), os.ModePerm)
-	ioutil.WriteFile(filepath.Join(path, "assets", "main.sass"), []byte(DefaultStyle), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "assets", "main.sass"), []byte(DefaultStyle), os.ModePerm)
 
 	// generate markdown directory
 	os.Mkdir(filepath.Join(path, "markdown"), os.ModePerm)
@@ -43,7 +43,7 @@ func generateConfigs(path string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	ioutil.WriteFile(filepath.Join(path, "config.dev.yml"), defaultDEVConfigYAML, os.ModePerm)
+	os.WriteFile(filepath.Join(path, "config.dev.yml"), defaultDEVConfigYAML, os.ModePerm)
 
 	// Generate default prod config
 	defaultPRODConfig := things.SiteConfig{
@@ -55,7 +55,7 @@ func generateConfigs(path string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	ioutil.WriteFile(filepath.Join(path, "config.prod.yml"), defaultPRODConfigYAML, os.ModePerm)
+	os.WriteFile(filepath.Join(path, "config.prod.yml"), defaultPRODConfigYAML, os.ModePerm)
 }
 
 func generateExamplePost(path string) {
@@ -64,12 +64,12 @@ func generateExamplePost(path string) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	ioutil.WriteFile(filepath.Join(path, "posts", "new-post.yml"), defaultPostConfigYAML, os.ModePerm)
-	ioutil.WriteFile(filepath.Join(path, "markdown", "new-post.md"), []byte(DefaultMarkdown), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "posts", "new-post.yml"), defaultPostConfigYAML, os.ModePerm)
+	os.WriteFile(filepath.Join(path, "markdown", "new-post.md"), []byte(DefaultMarkdown), os.ModePerm)
 }
 
-// Initialize Creates new site in the current directory
-func Initialize() {
+// initialize Creates new site in the current directory
+func initialize() {
 	// get working directory
 	ex, err := os.Getwd()
 	if err != nil {
@@ -88,4 +88,14 @@ func Initialize() {
 	generateExamplePost(ex)
 
 	generateConfigs(ex)
+}
+
+var InitCmd = &cobra.Command{
+	Use:     "init",
+	Short:   "init starts a new Statyk project in the current directory",
+	Long:    `init starts a new Statyk project in the current directory`,
+	Aliases: []string{"i"},
+	Run: func(cmd *cobra.Command, args []string) {
+		initialize()
+	},
 }

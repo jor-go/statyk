@@ -1,14 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"os"
-	"statyk/internal/build"
-	"statyk/internal/initialize"
-	"statyk/internal/new"
-	"statyk/internal/serve"
-	"statyk/internal/upload"
+	"statyk/internal/statyk"
 )
 
 // APP_VERSION Is the current statyk version
@@ -30,30 +23,5 @@ const (
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		log.Fatalln("Not Enough Arguments to statyk")
-	}
-	action := os.Args[1]
-
-	switch action {
-	case INIT:
-		initialize.Initialize()
-		break
-	case BUILD:
-		build.Build(true)
-		break
-	case SERVE:
-		build.Build(false)
-		serve.Serve()
-		break
-	case UPLOAD:
-		upload.Upload()
-		break
-	case NEW:
-		new.New(os.Args)
-	case VERSION:
-		fmt.Println(APP_VERSION)
-	default:
-		fmt.Println("Command not recognized...")
-	}
+	statyk.Execute()
 }

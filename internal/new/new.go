@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"statyk/internal/initialize"
+	"statyk/internal/statyk"
 	"statyk/internal/things"
 	"strings"
 	"time"
@@ -38,7 +38,7 @@ func newPost(title, path string) {
 	markdownPath := filepath.Join(path, "markdown", pConfig.Markdown)
 
 	ioutil.WriteFile(configPath, pConfigYaml, os.ModePerm)
-	ioutil.WriteFile(markdownPath, []byte(initialize.DefaultMarkdown), os.ModePerm)
+	ioutil.WriteFile(markdownPath, []byte(statyk.DefaultMarkdown), os.ModePerm)
 
 	fmt.Println("NEW", configPath)
 	fmt.Println("NEW", markdownPath)

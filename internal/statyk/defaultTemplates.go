@@ -1,4 +1,4 @@
-package initialize
+package statyk
 
 import "statyk/internal/things"
 
