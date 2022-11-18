@@ -3,13 +3,10 @@ Statyk
 
 Statyk is a simple easy to use statyk site generator written in go.
 
-Build
-=====
+## Build
 
-Uses go 1.12 or higher for module support
-
-1. `cd statyk/cmd/statyk`
-2. `go install`
+1. Run: `./build.sh`
+2. Run: `./output/statyk {cmd}`
 
 Commands
 ========
