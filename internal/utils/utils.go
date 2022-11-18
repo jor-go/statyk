@@ -7,7 +7,7 @@ import (
 	"os"
 	"statyk/internal/things"
 
-	blackfriday "gopkg.in/russross/blackfriday.v2"
+	blackfriday "github.com/russross/blackfriday/v2"
 	yaml "gopkg.in/yaml.v2"
 )
 
