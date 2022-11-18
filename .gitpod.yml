@@ -2,5 +2,10 @@ tasks:
   - command: |
       /workspace/statyk/build.sh
       export PATH=$PATH:/workspace/statyk/output
+      mkdir test-project
+      cd test-project
+      statyk init
+      cd ..
+      
 
 
