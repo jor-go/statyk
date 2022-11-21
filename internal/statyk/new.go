@@ -1,16 +1,15 @@
-package new
+package statyk
 
 import (
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
-	"statyk/internal/statyk"
 	"statyk/internal/things"
 	"strings"
 	"time"
 
+	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )
 
@@ -37,20 +36,20 @@ func newPost(title, path string) {
 	configPath := filepath.Join(path, "posts", pConfig.URL+".yml")
 	markdownPath := filepath.Join(path, "markdown", pConfig.Markdown)
 
-	ioutil.WriteFile(configPath, pConfigYaml, os.ModePerm)
-	ioutil.WriteFile(markdownPath, []byte(statyk.DefaultMarkdown), os.ModePerm)
+	os.WriteFile(configPath, pConfigYaml, os.ModePerm)
+	os.WriteFile(markdownPath, []byte(DefaultMarkdown), os.ModePerm)
 
 	fmt.Println("NEW", configPath)
 	fmt.Println("NEW", markdownPath)
 }
 
-// New Creates a new page*/
-func New(args []string) {
-	if len(args) < 3 {
+// generateNew Creates a new page*/
+func generateNew(args []string) {
+	if len(args) < 1 {
 		log.Fatalln("Not enough arguements to 'new'")
 	}
 
-	newType := args[2]
+	newType := args[0]
 
 	wd, err := os.Getwd()
 	if err != nil {
@@ -59,12 +58,22 @@ func New(args []string) {
 
 	switch newType {
 	case POST:
-		if len(args) < 4 {
+		if len(args) < 2 {
 			newPost("New Post", wd)
 		} else {
-			newPost(args[3], wd)
+			newPost(args[1], wd)
 		}
 	default:
-		log.Fatalln("Invalid arguement to 'new")
+		log.Fatalln("Invalid argument to 'new")
 	}
+}
+
+var NewCmd = &cobra.Command{
+	Use:     "new",
+	Short:   "new [type] generates files for a new item",
+	Long:    `new [type] generates files for a new item, that type can be a post`,
+	Aliases: []string{"n"},
+	Run: func(cmd *cobra.Command, args []string) {
+		generateNew(args)
+	},
 }

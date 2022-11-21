@@ -1,4 +1,4 @@
-package serve
+package statyk
 
 import (
 	"fmt"
@@ -9,6 +9,7 @@ import (
 	"statyk/internal/utils"
 
 	"github.com/gorilla/mux"
+	"github.com/spf13/cobra"
 )
 
 var wd string
@@ -28,8 +29,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, path)
 }
 
-// Serve Serves the site locally
-func Serve() {
+// serve Serves the site locally
+func serve() {
 	wd, err := os.Getwd()
 	if err != nil {
 		log.Fatalln(err)
@@ -48,4 +49,14 @@ func Serve() {
 
 	http.Handle("/", r)
 	http.ListenAndServe(":"+config.Port, r)
+}
+
+var ServeCmd = &cobra.Command{
+	Use:     "serve",
+	Short:   "serve runs a service to host the generated static files",
+	Long:    `serve runs a service to host the generated static files`,
+	Aliases: []string{"s"},
+	Run: func(cmd *cobra.Command, args []string) {
+		serve()
+	},
 }
