@@ -57,6 +57,7 @@ var ServeCmd = &cobra.Command{
 	Long:    `serve runs a service to host the generated static files`,
 	Aliases: []string{"s"},
 	Run: func(cmd *cobra.Command, args []string) {
+		build(false)
 		serve()
 	},
 }
