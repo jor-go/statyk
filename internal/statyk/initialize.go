@@ -25,7 +25,7 @@ func generateDirs(path string) {
 
 	// generate assets directory
 	os.Mkdir(filepath.Join(path, "assets"), os.ModePerm)
-	os.WriteFile(filepath.Join(path, "assets", "main.sass"), []byte(DefaultStyle), os.ModePerm)
+	os.WriteFile(filepath.Join(path, "assets", "main.scss"), []byte(DefaultStyle), os.ModePerm)
 
 	// generate markdown directory
 	os.Mkdir(filepath.Join(path, "markdown"), os.ModePerm)
@@ -35,8 +35,8 @@ func generateConfigs(path string) {
 	// Generate default dev config
 	defaultDEVConfig := things.SiteConfig{
 		Name:          "New Site",
-		StyleLocation: "http://localhost:8080/assets/main.css",
-		HomeLocation:  "http://localhost:8080",
+		StyleLocation: "/main.css",
+		HomeLocation:  "/",
 		Port:          "8080",
 	}
 	defaultDEVConfigYAML, err := yaml.Marshal(&defaultDEVConfig)
@@ -48,8 +48,8 @@ func generateConfigs(path string) {
 	// Generate default prod config
 	defaultPRODConfig := things.SiteConfig{
 		Name:          "New Site",
-		StyleLocation: "https://cdn.example.com/main.css",
-		HomeLocation:  "http://example.com",
+		StyleLocation: "/main.css",
+		HomeLocation:  "/",
 	}
 	defaultPRODConfigYAML, err := yaml.Marshal(&defaultPRODConfig)
 	if err != nil {

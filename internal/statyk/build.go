@@ -129,7 +129,7 @@ func build(isProd bool) {
 	}
 
 	// css
-	inputSass := filepath.Join(workingDirectory, "assets", "main.sass")
+	inputSass := filepath.Join(workingDirectory, "assets", "main.scss")
 	var outputSass string
 	if isProd {
 		outputSass = filepath.Join(workingDirectory, "build", "assets", "main.css")

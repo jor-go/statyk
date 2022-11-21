@@ -18,7 +18,7 @@ const DefaultHome = `
 <body>
     {{template "header" .}}
     {{range .Posts}}
-        {{.Config.Title}}
+        <a href="{{.Config.URL}}" title="{{.Config.Title}}">{{.Config.Title}}</a><br>
         {{index .Config.Custom "main-img"}}
     {{end}}
     {{template "footer" .}}
@@ -29,11 +29,11 @@ const DefaultHome = `
 // DefaultGeneral is the contents of the default general html file
 const DefaultGeneral = `
 {{define "header"}}
-
+    <header>Statyk</header>
 {{end}}
 
 {{define "footer"}}
-
+    <div class="footer"></div>
 {{end}}
 `
 
@@ -57,8 +57,19 @@ const DefaultPost = `
 
 // DefaultStyle is the content for the default .sass file
 const DefaultStyle = `
-body
-    margin: 0
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Sans-Serif;
+}
+
+header {
+    width: 100%;
+    background-color: gray;
+    padding: 1rem;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+}
 `
 
 // DefaultMarkdown is the content for the default markdown file
