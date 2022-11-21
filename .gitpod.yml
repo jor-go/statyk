@@ -10,7 +10,7 @@ tasks:
       cd test-project
       statyk init
       cd ..
-      mv /workspace/dark-sass/sass /workspace/output
+      mv /workspace/dart-sass/sass /workspace/statyk/output
       
 
 
