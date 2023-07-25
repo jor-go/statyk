@@ -5,7 +5,6 @@ RUN apt update && apt install -y \
     wget \
     libc6 \
     libstdc++6 \
-    python-minimal \
     ca-certificates \
     tar &&\
     wget https://rclone.org/install.sh && \
