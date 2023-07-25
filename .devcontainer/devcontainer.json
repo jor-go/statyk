@@ -1,0 +1,13 @@
+{
+    "name": "statyx",
+    "build": {"dockerfile": "Dockerfile"},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "zhuangtongfa.material-theme",
+                "golang.go",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
