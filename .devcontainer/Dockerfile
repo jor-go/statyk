@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     tar \
     fontconfig && \
-    adduser --disabled-password --gecos "" -m jordan && \
+    adduser --disabled-password --gecos "" jordan && \
     usermod -aG sudo jordan && \
     wget https://rclone.org/install.sh && \
     bash install.sh && \ 
