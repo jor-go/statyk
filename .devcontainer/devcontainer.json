@@ -9,5 +9,7 @@
                 "ms-azuretools.vscode-docker"
             ]
         }
-    }
+    },
+    "workspaceFolder": "/home/jordan/w",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/jordan/w,type=bind,consistency=cached"
 }

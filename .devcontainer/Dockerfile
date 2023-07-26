@@ -12,5 +12,15 @@ RUN apt-get update && apt-get install -y \
     wget https://rclone.org/install.sh && \
     bash install.sh && \ 
     wget https://go.dev/dl/go1.20.6.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.20.6.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.20.6.linux-amd64.tar.gz && \
+    wget https://github.com/be5invis/Iosevka/releases/download/v25.1.1/ttf-iosevka-25.1.1.zip && \
+    unzip ttf-iosevka-25.1.1.zip -d /usr/share/fonts && \
+    fc-cache -f -v && \
+    wget https://nodejs.org/dist/v18.17.0/node-v18.17.0-linux-x64.tar.xz && \
+    tar -C /usr/local -xf node-v18.17.0-linux-x64.tar.xz && \
+    adduser --disabled-password --gecos "" -m jordan && \
+    usermod -aG sudo jordan
+
+
+USER jordan
 
