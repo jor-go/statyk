@@ -11,5 +11,5 @@
         }
     },
     "workspaceFolder": "/home/jordan/w",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/jordan/w,type=bind,consistency=cached"
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/jordan/w/statyk,type=bind,consistency=cached"
 }
