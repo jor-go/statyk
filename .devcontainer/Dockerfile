@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
     git \
     ca-certificates \
     tar \
-    fontconfig && \
+    fontconfig \
+    xz-utils && \
     adduser --disabled-password --gecos "" jordan && \
     usermod -aG sudo jordan && \
     wget https://rclone.org/install.sh && \
