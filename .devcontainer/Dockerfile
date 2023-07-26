@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     ca-certificates \
-    tar && \
+    tar 
+    fontconfig && \
     wget https://rclone.org/install.sh && \
     bash install.sh && \ 
     wget https://go.dev/dl/go1.20.6.linux-amd64.tar.gz && \
