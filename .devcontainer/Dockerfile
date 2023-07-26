@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     ca-certificates \
-    tar 
+    tar \
     fontconfig && \
     wget https://rclone.org/install.sh && \
     bash install.sh && \ 
