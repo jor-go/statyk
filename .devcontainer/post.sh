@@ -1,6 +1,6 @@
 echo -e "\nexport PATH=$PATH:/usr/local/go/bin:/home/jordan/node/bin:/home/jordan/w/statyk" >> /home/jordan/.bashrc
 
-source /home/jordan/.bashrc
+export PATH=$PATH:/usr/local/go/bin:/home/jordan/node/bin:/home/jordan/w/statyk
 
 go version
 node --version
