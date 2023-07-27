@@ -4,9 +4,6 @@ import (
 	"statyk/internal/statyk"
 )
 
-// APP_VERSION Is the current statyk version
-const APP_VERSION = "0.0.1"
-
 const (
 	//INIT : Constant for init arg
 	INIT = "init"
