@@ -13,6 +13,6 @@
     "workspaceFolder": "/home/jordan/w",
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/jordan/w/statyk,type=bind,consistency=cached",
     "postAttachCommand": {
-        "setup": "/bin/bash /home/jordan/w/statyk/.devcontainer/post.sh && source /home/jordan/.bashrc"
+        "setup": "/bin/bash /home/jordan/w/statyk/.devcontainer/post.sh && source /home/jordan/.bashrc && cd statyk"
     }
 }
